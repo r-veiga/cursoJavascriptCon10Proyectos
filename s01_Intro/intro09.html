@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guía de Javascript moderno. S01 INTRODUCCIÓN</title>
+</head>
+<body>
+    <h1>Conversión de String a Number en Javascript</h1> 
+
+    <p>Para evitar los problemas que surgen cuando se combina el tratamiento de números con Strings que contienen números, 
+        se aconseja hacer un buen uso de las conversiones entre tipos. 
+        <br>La conversión se usará mucho, cuando se recibe un valor de un formulario HTML, se recibe como String y para mis cálculos necesitaré transformarlo en número.
+    </p>
+    <p>Los errores los encontramos cuando el operador tiene un uso sobrecargado. 
+        <br> No tenemos el problema con el - porque sólo se usa para restar, o con * para multiplicar . 
+        <br> Sí lo tenemos con el + porque puede usarse como suma o como concatenación, dependiendo. 
+    </p>
+    <p>Cuidado con el valor <em>NaN</em> "not a number". El valor NaN es de tipo Number. 
+            <br> Cuando hago una conversión con <em>Number()</em> o <em>parseInt()</em> de un String no numérico, obtengo NaN. 
+            <br> Pero NaN no es un error, así que arrastraré NaN hasta la siguiente operación matemática que realice. Y ahí romperá el programa.
+        </p>
+            
+    <div id="app"></div>
+
+    <ul>
+        <li>Number( String )</li>
+        <li>parseInt( String )</li>
+        <li>parseFloat( String )</li>
+        <li>miNumber.toFixed( numDecimales ) :: String</li>
+    </ul>
+    
+    <footer>
+        <div class="anterior" style="float:left"><a href="intro08.html">Anterior</a></div>
+        <div class="siguiente" style="float:right"><a href="intro10.html">Siguiente</a></div>
+    </footer>
+    
+    <script src="intro09.js"></script>
+
+</body>
+</html>
