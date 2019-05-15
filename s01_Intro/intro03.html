@@ -8,9 +8,56 @@
 </head>
 <body>
     <h1>Declarar variables con <em>var</em></h1> 
+    <h2>Y también el uso de <em>const</em> y <em>let</em></h2>
 
     <p><em>var</em> es una palabra para definir variables que está desactualizada.</p>
+    <p><em>let</em> mejora a <em>var</em> y es la palabra indicada para definir variables. 
+        <br>No se permite emplear dos veces <em>let</em> en el mismo scope, lo que reduce errores.</p>
+    <p><em>const</em> permite declarar constantes. Su valor no se puede reasignar. 
+        <br>La no reasignación de <em>const</em> es especialmente cierta para primitivas, 
+        pero en el caso de arrays y de objetos, aunque no se permite su reasignación sí es posible su modificación. 
+        Los arrays y objectos definidos como <em>const</em> son mutables.</p>
+
+
     <p>El resultado de este ejercicio se puede ver en la consola con F12 (ejercicio en que se ha usado console.log())</p>
+
+    <pre><code>
+        var nombre = 'Carlos';
+        var apellido;
+        console.log(nombre);                    // Carlos
+        console.log(apellido);                  // undefined   
+        
+        var nombre = 'Juan';                    // VAR permite definir dos veces una variable en el mismo scope
+        console.log(nombre);                    // Juan
+
+        let coche = 'Audi';
+        console.log(coche);
+
+        let coche = 'Renault';                   // Uncaught SyntaxError: Identifier 'coche' has already been declared
+        console.log(coche);                      // ningún código del script llegaría a ejecutarse por el fallo anterior
+
+        const aeropuerto = 'Barajas';
+        const arrayNumeros = [100, 200, 300];
+        console.log(aeropuerto);                 // Barajas
+        console.log(arrayNumeros);               // (3) [100, 200, 300]
+        
+        const aeropuerto = 'Barajas';            // Uncaught SyntaxError: Identifier 'aeropuerto' has already been declared
+        
+        arrayNumeros[0] = 7;
+        arrayNumeros.push(8);
+        console.log(arrayNumeros);               // (4) [7, 200, 300, 8]
+        
+        const mascota = { 
+            raza: 'gato', 
+            nombre: 'Manchitas' 
+        };
+        console.log(mascota);                    // {raza: "gato", nombre: "Manchitas"}
+        mascota.raza = 'perro';
+        mascota.edad = 4;                   
+        console.log(mascota);                    // {raza: "perro", nombre: "Manchitas", edad: 4}
+
+    </code></pre>
+
     <div id="app"></div>
 
     <script src="intro03.js"></script>

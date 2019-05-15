@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guía de Javascript moderno. S01 INTRODUCCIÓN</title>
+
+    <style>
+    code { font-size: 1.2rem; color: blueviolet;}
+    li { margin-bottom: 0.5rem;}
+    </style>
+</head>
+<body>
+    <h1>Arrays de objetos en Javascript</h1> 
+
+    <p>Continúo con el tema anterior, dedicado a objetos.
+        <br>Voy a manipular objetos dentro de un array.
+    </p>
+            
+    <pre><code>
+    const autos = {
+        { modelo: 'Mustang'  , motor: 6.2 } ,
+        { modelo: 'Camaro'   , motor: 6.1 } ,
+        { modelo: 'Corvette' , motor: 6.3 }
+    };
+
+    console.log(autos[0].modelo);
+    
+    for(let i = 0; i < autos.length; i++) {
+        console.log(`${autos[i].modelo} tiene un motor de ${autos[i].motor} cc.`);
+    }
+    </pre></code> 
+    
+    <footer>
+        <div class="anterior" style="float:left"><a href="intro13.html">Anterior</a></div>
+        <div class="siguiente" style="float:right"><a href="intro15.html">Siguiente</a></div>
+    </footer>
+    
+    <script src="intro14.js"></script>
+
+</body>
+</html>

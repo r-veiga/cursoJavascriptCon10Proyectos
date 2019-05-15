@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guía de Javascript moderno. S01 INTRODUCCIÓN</title>
+
+    <style>
+    code { font-size: 1.2rem; color: blueviolet;}
+    li { margin-bottom: 0.5rem;}
+    </style>
+</head>
+<body>
+    <h1>Funciones en Javascript</h1> 
+
+    <p>Las funciones se definen con la palabra <strong>function</strong>. Se distinguen tres tipos de funciones: </p>  
+    <ol>
+        <li><strong>funciones con nombre</strong></li>
+        <pre><code>
+        function saludar( nombre ) {
+            console.log(" Hola " + nombre);
+        }
+
+        function devuelveSaludo( nombre ) {
+            return "Hola " + nombre;
+        }
+
+        function suma( a, b ){ 
+            return a + b;
+        }
+
+        retorno1 = saludar("Arturo");          // retorno1 = undefined 
+        retorno2 = devuelveSaludo("Adela");    // retorno2 = "Hola Adela" 
+        let total = suma( 1, 4 )               // total = 5
+        let otroTotal = suma ( 1, "4" );       // total = "14" 
+        </pre></code>
+
+        <li><strong>funciones anónimas</strong></li>
+        <li><strong>expresión de función inmediatamente invocada</strong></li>
+    </ol>            
+    <p>Las "<strong>high order functions</strong>" son aquellas que devuelven una función o reciben una función como parámetro. </p>
+
+    <p>Las funciones <strong>siempre devuelven un valor</strong>. 
+        <br> Cuando el valor devuelto no lo defino explícitamente, éste es <code>undefined</code>.</p>
+
+    
+    <footer>
+        <div class="anterior" style="float:left"><a href="intro14.html">Anterior</a></div>
+        <div class="siguiente" style="float:right"><a href="intro16.html">Siguiente</a></div>
+    </footer>
+    
+    <script src="intro15.js"></script>
+
+</body>
+</html>

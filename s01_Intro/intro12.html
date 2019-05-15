@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guía de Javascript moderno. S01 INTRODUCCIÓN</title>
+
+    <style>
+    code { font-size: 1.2rem; color: blueviolet;}
+    li { margin-bottom: 0.5rem;}
+    </style>
+</head>
+<body>
+    <h1>Arrays en Javascript</h1> 
+
+    <p>Para crear un array puedo usar indistintamente cualquiera de estas dos formas: </p>
+            
+    <ul>
+        <li><code>let meses = ['Enero', 'Febrero', ... , 'Diciembre'];</code></li>
+        <li><code>let meses = new Array('Enero', 'Febrero', ... , 'Diciembre');</code></li>
+    </ul>
+
+    <p>Para acceder a los elementos de un array se accede especificando el índice del elemento, comenzando por el cero, </p>
+    <ul>
+        <li><code>meses[1] => "Febrero"</code></li> 
+    </ul>
+
+    <p>Algunas funciones de los arrays:</p>          
+    <ul>
+        <li><code>Array.isArray( objetoSupuestoArray )</code> :: Boolean</li>
+        <li><code>.reverse( )</code> :: invierte el array (modifica el array original)</li>
+        <li><code>.sort( )</code> :: ordena alfabéticamente el array (modifica el array original)</li>
+        <li><code>.sort(funcionComparadora?: (a, b) => number) :: number[]</code> 
+            <br>Ordena un array numérico, debe usar una función comparadora (modifica el array original)</li>
+        <li><code>.concat( otroArray )</code> :: Array 
+            <br> Append un array al final del array original. 
+            <br> No modifica el array original, así que hay que recoger la operación en una variable </li>
+        <li><code>.indexOf( valorBuscado )</code> :: Number entero</li>
+        <li><code>.push( elementoNuevo )</code> :: Number entero (número de elementos en el array) 
+            <br> Añade el/los nuevo(-s) elemento(-s) al final del array</li>
+        <li><code>.unshift( elementoNuevo )</code> :: Number entero (número de elementos en el array) 
+            <br> Añade el nuevo elemento al inicio del array, desplazando a todos los demás</li>
+        <li><code>.pop()</code> :: elemento eliminado
+            <br> Elimina el elemento que se halla al final del array</li>
+        <li><code>.shift()</code> :: elemento eliminado
+            <br> Elimina el elemento que se halla al principio del array</li>
+        <li><code>.splice( index, numElementosAEliminar )</code> :: elemento(-s) eliminado(-s)
+            <br> Elimina el elemento que se halla al principio del array</li>
+    </ul>
+
+    
+    <footer>
+        <div class="anterior" style="float:left"><a href="intro11.html">Anterior</a></div>
+        <div class="siguiente" style="float:right"><a href="intro13.html">Siguiente</a></div>
+    </footer>
+    
+    <script src="intro12.js"></script>
+
+</body>
+</html>
