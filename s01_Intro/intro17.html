@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guía de Javascript moderno. S01 INTRODUCCIÓN</title>
+
+    <style>
+    code { font-size: 1.2rem; color: blueviolet;}
+    li { margin-bottom: 0.5rem;}
+    </style>
+</head>
+<body>
+    <h1>Fechas en Javascript</h1> 
+
+    <p>Las fechas en Javascript es un tema enorme. Nos centraremos en lo básico.</p>  
+    
+    <pre><code>
+    const navidad2019 = new Date('2019-12-25');
+
+    const fechaHoy = new Date();                     // Fri May 17 2019 01:32:10 GMT+0200 (hora de verano de Europa central)
+
+    let aaaa = fechaHoy.getFullYear();               // 2019
+    let MM = fechaHoy.getMonth();                    // 4    (0=enero)
+    let dd = fechaHoy.getDate();                     // 17
+    let hh = fechaHoy.getHours();                    // 1
+    let mm = fechaHoy.getMinutes();                  // 32
+    let weekday = fechaHoy.getDay();                 // 5    (0=domingo)
+    let msDesde1970_01_01 = fechaHoy.getTime();      // 1558049530703
+
+    let nuevoTimestamp = fechaHoy.setFullYear(1992); // 706059130703
+    const nuevaFecha = new Date( nuevoTimestamp );   // Sun May 17 1992 01:32:10 GMT+0200 (hora de verano de Europa central)
+    nuevaFecha.setMonth(6);
+    nuevaFecha.setDate(4);
+    </code></pre>
+
+    <footer>
+        <div class="anterior" style="float:left"><a href="intro16.html">Anterior</a></div>
+        <div class="siguiente" style="float:right"><a href="intro18.html">Siguiente</a></div>
+    </footer>
+    
+    <script src="intro17.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guía de Javascript moderno. S01 INTRODUCCIÓN</title>
+
+    <style>
+    code { font-size: 1.2rem; color: blueviolet;}
+    li { margin-bottom: 0.5rem;}
+    </style>
+</head>
+<body>
+    <h1>Try / Catch / Finally en Javascript</h1> 
+
+    <p>Hay poco que explicar porque el funcionamiento es similar a Java.</p>  
+    <p>La ejecución de un script Javascript <strong>se detiene</strong> cuando llega a un punto de error.
+        <br>Como Javascript no es compilado, no me puede cantar error en compilación, se descubre en runtime.
+    </p>
+    
+    <pre><code>
+    try {
+        invocacionQueVaAFallarPorInexistente();
+    }
+    catch( error ) {
+        console.log(error);
+        console.log(`Error recogido en CATCH, así que se continúa la ejecución del script`);
+        console.log(`-- -- -- -- -- -- `);
+    }
+    finally {
+        console.log(`Esto es bloque FINALLY que se ejecuta siempre`);
+        console.log(`-- -- -- -- -- -- `);
+    }
+
+    let retornoUndefined = obtenerClientesMock();
+    
+    function obtenerClientesMock() { 
+        console.log(`... descargando los clientes Mock`);
+        setTimeout( function() { console.log('Completada descarga clientes Mock'); }, 3000 );
+    }
+    </code></pre>
+
+    <footer>
+        <div class="anterior" style="float:left"><a href="intro15.html">Anterior</a></div>
+        <div class="siguiente" style="float:right"><a href="intro17.html">Siguiente</a></div>
+    </footer>
+    
+    <script src="intro16.js"></script>
+
+</body>
+</html>

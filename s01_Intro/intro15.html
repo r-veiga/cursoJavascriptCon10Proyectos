@@ -16,19 +16,13 @@
 
     <p>Las funciones se definen con la palabra <strong>function</strong>. Se distinguen tres tipos de funciones: </p>  
     <ol>
-        <li><strong>funciones con nombre</strong></li>
+        <li><strong>funciones con nombre</strong>
+            <br>Una función que puede ser invocada por su nombre en cualquier momento. 
+        </li>
         <pre><code>
-        function saludar( nombre ) {
-            console.log(" Hola " + nombre);
-        }
-
-        function devuelveSaludo( nombre ) {
-            return "Hola " + nombre;
-        }
-
-        function suma( a, b ){ 
-            return a + b;
-        }
+        function saludar( nombre )        { console.log(" Hola " + nombre); }
+        function devuelveSaludo( nombre ) { return "Hola " + nombre;        }
+        function sumar( a, b )            { return a + b;                   }
 
         retorno1 = saludar("Arturo");          // retorno1 = undefined 
         retorno2 = devuelveSaludo("Adela");    // retorno2 = "Hola Adela" 
@@ -36,11 +30,83 @@
         let otroTotal = suma ( 1, "4" );       // total = "14" 
         </pre></code>
 
-        <li><strong>funciones anónimas</strong></li>
-        <li><strong>expresión de función inmediatamente invocada</strong></li>
-    </ol>            
-    <p>Las "<strong>high order functions</strong>" son aquellas que devuelven una función o reciben una función como parámetro. </p>
+        <li><strong>funciones anónimas</strong> - una función que no tiene nombre.
+            <br>Como las funciones son objetos al fin y al cabo, la puedo asignar 
+            a una variable o a una propiedad de un objeto para luego invocarla empleando <strong>paréntesis ( )</strong>.
+        </li>
+        <pre><code>
+        let hola      = function( nombre ) { console.log(" Hola " + nombre); };
+        let darHola   = function( nombre ) { return "Hola " + nombre; };
+        let sumatorio = function( a, b )   { return a + b; };
 
+        retorno1 = hola("Benito");               // retorno1 = undefined 
+        retorno2 = darHola("Bárbara");           // retorno2 = "Hola Bárbara" 
+        let total = sumatorio( 1, 4 )            // total = 5
+        let otroTotal = sumatorio ( 1, "4" );    // total = "14" 
+        </pre></code>
+
+        <li><strong>funciones IIFE</strong> (expresión de función inmediatamente invocada)
+            <br>Función ejecutada en el mismo punto que es declarada, mediante el uso de <strong>paréntesis ( )</strong>.
+        </li>
+        <pre><code>
+        ( function( altura ) {
+            console.log('La altura de esta montaña es superior a ' + altura);
+        }
+        ( '8000 metros' ) );   // La altura de esta montaña es superior a 8000 metros
+        </pre></code>
+        
+        <li><strong>métodos de propiedad</strong>
+            <br>Se definen como la propiedad de un objeto. Pueden definirse al tiempo que el objeto, o pueden definirse fuera.
+        </li>
+        <pre><code>
+        const musica = {
+            reproducir: function( cancion ) { 
+                            console.log(`Estoy reproduciendo la canción: ${cancion}`); 
+                        }
+        }   
+
+        musica.cambiarCancion = function( otraCancion ) {
+            console.log('Cambio a la canción: ' + otraCancion);
+        }
+        
+        let retornoUndefined = musica.reproducir('Hey Jude');
+        retornoUndefined = musica.reproducir('I am the walrus');    
+        </pre></code>
+        
+    </ol>   
+
+<h2>Controlar la recepción de un parámetro <strong>(default value)</strong> </h2>
+    <p>Mientras que tiempo atrás se hacía con un <code>if</code> controlando que no estuviese <code>undefined</code>, 
+        actualmente se introduce un valor por defecto en la definición de la función. 
+    </p>
+    <pre><code>
+    function despedirALaAntigua( nombre ) {
+        if( typeof nombre === 'undefined' ) { 
+            let nombre = 'Visitante desconocido';
+        }
+        console.log('Adiós ${nombre}');
+    }
+
+    function despedirALaModerna( nombre = 'Visitante desconocido' ) {
+        console.log('Adiós ${nombre}');
+    }
+
+    despedirALaAntigua();    // Adiós visitante desconocido
+    despedirALaModerna();    // Adiós visitante desconocido
+
+
+    function sumaDefaultVals( a = 3, b = 5 ) {
+        return a + b;
+    }
+
+    let sumaDosSumandos  = sumaDefaultVals( 30, 10 );    // 40 = 30 + 10
+    let sumaConUnDefault = sumaDefaultVals( 90 );        // 95 = 90 + (5)
+    </pre></code>
+        
+    <h2>High-order functions</h2>
+    <p>Se denominan "<strong>high order functions</strong>" a las funciones que devuelven una función o reciben una función como parámetro. </p>
+
+    <h2>return</h2>
     <p>Las funciones <strong>siempre devuelven un valor</strong>. 
         <br> Cuando el valor devuelto no lo defino explícitamente, éste es <code>undefined</code>.</p>
 
