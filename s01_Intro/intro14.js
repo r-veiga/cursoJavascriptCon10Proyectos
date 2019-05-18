@@ -49,3 +49,4 @@ const productosComprados = carrito.map( function( itemCarrito ) {
     return 'comprado ' + itemCarrito.producto;
 });
 console.log(productosComprados);
+

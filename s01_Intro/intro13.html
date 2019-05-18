@@ -39,6 +39,39 @@
         </pre>
     </code> 
     
+    <h2>Recorrer todas las propiedades de un objeto con un "for"</h2> 
+
+    <pre><code>
+    const automovil = {
+        modelo: 'Camaro', 
+        motor: 6.1,
+        anio: 1996,
+        marca: 'Chevrolet',
+
+        arrancar: function() { console.log('El coche arranca'); }
+    };
+
+    for( let propiedad in automovil ) {
+        console.log(`${propiedad}: ${automovil[propiedad]}`);
+    }
+
+    automovil['arrancar']();  // undefined -- "El coche arranca"
+    automovil['modelo']();    // Uncaught TypeError: automovil['modelo'] is not a function
+    </code></pre>
+
+    <h2>Iteradores ya disponibles en Javascript (similar a Java Collections)</h2> 
+
+    <p>Un array, un objeto Set y un objeto Map.</p>
+    <pre><code>
+    const ciudades = ['New York', 'Madrid', 'París', 'Berlín'];
+    const ordenes = new Set( [123, 321, 131, 102] );
+
+    const datosPoliticos = new Map();
+    datosPoliticos.set('nombre', 'Obama');
+    datosPoliticos.set('ocupacion', 'presidente');
+    datosPoliticos.set('esRetirado', true);        
+    </code></pre>
+
     <footer>
         <div class="anterior" style="float:left"><a href="intro12.html">Anterior</a></div>
         <div class="siguiente" style="float:right"><a href="intro14.html">Siguiente</a></div>
