@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guía de Javascript moderno. S02 OO (ES5 + ES2015)</title>
+
+    <style>
+        code { font-size: 1rem; color: blueviolet;}
+        li { margin-bottom: 0.5rem;}
+    </style>
+    
+</head>
+<body>
+    <h1>Constructores & "this"</h1>  
+
+    <p>La forma ya vista de creación de objetos, de manera literal está muy bien cuando necesito un solo objetos
+        <br>Pero, ¿qué pasa cuando necesito varias instancias de un mismo tipo de objeto? 
+        Pues primero es necesario ver los constructores
+    </p>
+    <p>El constructor lo construiré como una <code>function()</code> cuyo nombre, por convención, comenzará por mayúscula. 
+        <br>Instanciaré el objeto con la palabra clave <code>new()</code>.
+    </p>
+
+    <pre><code>
+    function Persona( pNombre, fechaNac ) {
+
+        this.nombre = pNombre;
+        this.profesion = 'futbolista';
+        this.cumpleaños = new Date( fechaNac );
+
+        this.calcularEdad = function() {
+            const diferencia =  Date.now() - this.cumpleaños.getTime();
+            const edad = new Date(diferencia);
+            return Math.abs(edad.getUTCFullYear() - 1970);
+        }
+    }
+    
+    const zinedine = new Persona('Zinedine', '1972-06-23');
+    const iker = new Persona('Iker', '20-05-1981');           // cumpleaños: Invalid date --- pero se crea el objeto
+
+    const edadZinedine = zinedine.calcularEdad();        
+    </code></pre>
+
+    <h2>Built In constructors</h2>
+
+    <p>Las primitivas en Javascript también pueden crearse como objetos.
+        <br>Como en Java, existen unas clases wrapper, pero no tiene mucho sentido usarlas (además de que ralentizan).
+        <br>Clases wrapper: <code>String</code>, <code>Boolean</code>, <code>Number</code>, <code>Function</code>, <code>Object</code>, <code>Array</code>, <code>RegExp</code> 
+        <br><code>Function</code> es lioso porque sus primeros parámetos son los parámetros a pasar a la función y el último parámetro es el código de la función.
+        <br>Esto puede dar lugar a error al tratar de relacionar diferentes tipos con operadores "<code>===</code> 
+    </p>
+    
+    <pre><code>
+    const nombre1 = 'pepe';
+    const nombre2 = new String('pepe');
+
+    console.log(nombre1);           // pepe
+    console.log(nombre2);           // pepe
+    console.log(typeof nombre1);    // string
+    console.log(typeof nombre2);    // object
+    </code></pre>
+
+    <footer>
+        <div class="anterior" style="float:left"><a href="OO00.html">Anterior</a></div>
+        <div class="siguiente" style="float:right"><a href="OO02_prototipos.html">Siguiente</a></div>
+    </footer>
+    
+    <script src="OO01_constructors.js"></script>
+</body>
+
+</html>

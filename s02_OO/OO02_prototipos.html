@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guía de Javascript moderno. S02 OO (ES5 + ES2015)</title>
+
+    <style>
+        code { font-size: 1rem; color: blueviolet;}
+        li { margin-bottom: 0.5rem;}
+    </style>
+    
+</head>
+<body>
+    <h1>Prototypes</h1>  
+
+    <p>Cada objeto de Javascript contiene un <code>prototype</code> y éste a su vez es un objeto. 
+        <br>Todo objeto hereda las propiedades de su prototipo. 
+        <br>Con la <strong>prototype chain</strong> puedo escalar hasta llegar a <code>Object.prototype</code>
+    </p>
+
+    <p>El prototipo no es algo que pueda ser fácilmente accedido como una propiedad.
+        <br>En la consola de Javascript del navegador (F12), se nos muestra como <code>__proto__</code> dentro del objeto. 
+        A su vez puede tener otro <code>__proto__</code> hasta llegar al del <code>Object</code>. 
+    </p>
+
+    <img src="../img/pantallazo002.PNG" alt="__proto__ visto en Chrome Dev Tools">
+
+    <pre><code>
+    function Persona( pNombre, fechaNac ) {
+
+        this.nombre = pNombre;
+        this.profesion = 'futbolista';
+        this.cumpleaños = new Date( fechaNac );
+
+        this.calcularEdad = function() {
+            const diferencia =  Date.now() - this.cumpleaños.getTime();
+            const edad = new Date(diferencia);
+            return Math.abs(edad.getUTCFullYear() - 1970);
+        }
+    }
+    
+    const zinedine = new Persona('Zinedine', '1972-06-23');
+    const iker = new Persona('Iker', '20-05-1981');           // cumpleaños: Invalid date --- pero se crea el objeto
+
+    const edadZinedine = zinedine.calcularEdad();        
+    </code></pre>
+
+    <p>Por organización, para evitar que un objeto quede muy cargado, hay razones para preferir localizar el código en el  
+        <code>prototype</code> en lugar de en el propio objeto.
+    </p>
+    
+    <pre><code>
+    Persona.prototype.darDatosPersonales = function() {
+        return `${this.nombre} tiene ${this.calcularEdad()} años.`;
+    };
+    </code></pre>    
+
+    <footer>
+        <div class="anterior" style="float:left"><a href="OO01_constructors.html">Anterior</a></div>
+        <div class="siguiente" style="float:right"><a href="OO03.html">Siguiente</a></div>
+    </footer>
+    
+    <script src="OO02_prototipos.js"></script>
+</body>
+
+</html>
