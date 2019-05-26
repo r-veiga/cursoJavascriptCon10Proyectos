@@ -39,10 +39,10 @@ Seguro.prototype.cotizarSeguro = function ( informacion ) {
    if ( this.tipo === 'basico' ){
        cantidad *= 1.30;
    } else {
-       cantidad *= 1.50;
+       cantidad *= 1.50
    }
 
-    return cantidad;
+   return cantidad;
 };
 
 function Interfaz() {}
