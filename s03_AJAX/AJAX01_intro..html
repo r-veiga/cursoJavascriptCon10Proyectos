@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guía de Javascript moderno. S03 AJAX</title>
+
+    <link rel="stylesheet" href="AJAX01_css/normalize.css">
+    <link rel="stylesheet" href="AJAX01_css/skeleton.css">
+
+    <style>
+        body { width:90%; margin:auto; }
+        code { font-size: 1.5rem; color: blueviolet;}
+        li { margin-bottom: 0.5rem;}
+        .container { margin-top: 40px; }
+        #listado { background-color: rgba(255, 255, 0, 0.1); }
+    </style>
+    
+</head>
+<body>
+    <h1>Introducción a AJAX</h1>  
+
+    <div class="container">
+        <a href="#" class="button" id="cargar">Cargar</a>
+        <div id="listado"></div>
+    </div>
+
+    <br><p>Tengo un enlace que me lanzará una petición AJAX.</p>
+    <pre><code>
+        &lt;div class="container"&gt;
+            &lt;a href="#" class="button" id="cargar"&gt;Cargar&lt;/a&gt;
+            &lt;div id="listado"&gt;&lt;/div&gt;
+        &lt;\div&gt;
+    </code></pre>
+    
+    <p>Una petición AJAX con Javascript se compone de cuatro pasos: </p>
+    <ol>
+        <li>crear un objeto <strong>XmlHttpRequest</strong></li>
+        <li>indicar cómo se abrirá conexión contra URL remota</li>
+        <li>definir el comportamiento cuando se haya cargado (¿un listener?)</li>
+        <li>enviar los datos de la petición/request</li>
+    </ol>
+    <pre><code>
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('GET', 'AJAX01_datos.txt', true); // método, url, esAsíncrono 
+    
+        xhr.onload = function() {
+            if ( this.status === 200 ) {
+                console.log( this.responseText );
+            }
+        };
+    
+        xhr.send();
+    </code></pre>
+
+    <p>Tiempo atrás la petición AJAX se hacía de otro modo, cambiaba el paso 3.
+        <br>Se empleaban los llamados <strong>state change</strong>.
+        <br>El importante es el 4, que se suele comprobar con el status 200.
+    </p>
+    <ul>
+        <li>0: no inicializado</li>
+        <li>1: conexión establecida</li>
+        <li>2: recibido el request</li>
+        <li>3: procesando el request</li>
+        <li>4: hay una respuesta lista (la única que nos importa)</li>
+    </ul>
+    <pre><code>
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('GET', 'AJAX01_datos.txt', true); // método, url, esAsíncrono 
+    
+        xhr.onreadystatechange = function() {
+
+                // puedo ver cómo evoluciona el cambio de estado: 2, 3, 4
+                console.log(`Estado ${this.readyState}`);  
+    
+                if ( this.readyState === 4 && this.status === 200 ) {
+                console.log( this.responseText );
+            }
+        };
+    
+        xhr.send();
+    </code></pre>
+        
+    <footer>
+        <div class="anterior" style="float:left"><a href="../s02_OO/OO02_prototipos.html">Anterior</a></div>
+        <div class="siguiente" style="float:right"><a href="AJAX02.html">Siguiente</a></div>
+    </footer>
+    
+    <script src="AJAX01_intro.js"></script>
+</body>
+
+</html>

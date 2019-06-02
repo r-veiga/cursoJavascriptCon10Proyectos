@@ -1,0 +1,4 @@
+Informacion almacenada en el archivo AJAX01_datos.txt --- INICIO 
+   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, maxime.
+   Repellendus ullam vero ad nihil aliquam est placeat cumque, deserunt asperiores facilis!
+Informacion almacenada en el archivo AJAX01_datos.txt --- FIN
