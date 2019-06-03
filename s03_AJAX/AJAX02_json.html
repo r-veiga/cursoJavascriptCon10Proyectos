@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guía de Javascript moderno. S03 AJAX</title>
+
+    <link rel="stylesheet" href="AJAX01_css/normalize.css">
+    <link rel="stylesheet" href="AJAX01_css/skeleton.css">
+
+    <style>
+        body { width:90%; margin:auto; }
+        code { font-size: 1.5rem; color: blueviolet;}
+        li { margin-bottom: 0.5rem;}
+        .container { margin-top: 40px; }
+        #datosEmpleado, #datosEmpleados { background-color: rgba(255, 255, 0, 0.1); }
+    </style>
+    
+</head>
+<body>
+    <h1>AJAX y JSON</h1>  
+
+    <div class="container">
+        <a href="#" class="button" id="empleado">1 empleado</a>
+        <div id="datosEmpleado"></div>
+    </div>
+
+    <br><p>Tengo un enlace que me lanza una petición AJAX para devolverme la información 
+            de un empleado, que está almacenada en un fichero de tipo JSON.</p>
+    
+    <hr>
+    <div class="container">
+        <a href="#" class="button" id="empleados">Varios empleados</a>
+        <div id="datosEmpleados"></div>
+    </div>
+    
+    <br><p>Tengo otro enlace que me lanza una petición AJAX para devolverme la información 
+        de una serie de empleados, toda ésta almacenada en un fichero de tipo JSON.</p>
+        
+    <hr>
+    <p>Puedo ojear el código HTML de los botones que invocan AJAX en el tema anterior, donde se detalla.</p>
+
+    <hr>
+    <p>Éste es el fichero JSON <strong>AJAX02_empleado.json</strong> que contiene los datos de un solo empleado.
+    </p>
+    <pre><code>
+        {
+            "id": 1
+            , "nombre": "Zinedine"
+            , "apellido": "Zidane"
+            , "empresa": "Real Madrid"
+            , "puesto": "entrenador"
+        }    
+    </code></pre>
+
+    <p>Éste es el fichero JSON <strong>AJAX02_empleados.json</strong> que contiene los datos de varios empleados, es directamente un array. 
+        Lo podría haber encapsulado con una clave que guardara el array, pero esta notación es más breve.
+    </p>
+    <pre><code>
+        [
+            {
+                "id": 1
+                , "nombre": "Florentino"
+                , "apellido": "Pérez"
+                , "empresa": "Real Madrid"
+                , "puesto": "presidente"
+            }, 
+            {
+                "id": 2
+                , "nombre": "Pep"
+                , "apellido": "Guardiola"
+                , "empresa": "Manchester City"
+                , "puesto": "entrenador"
+            },
+            {
+                "id": 3
+                , "nombre": "Sergio"
+                , "apellido": "Ramos"
+                , "empresa": "Real Madrid"
+                , "puesto": "capitán"
+            },
+            {
+                "id": 4
+                , "nombre": "Leo"
+                , "apellido": "Messi"
+                , "empresa": "FC Barcelona"
+                , "puesto": "jugador franquicia"
+            }
+        ]        
+    </code></pre>
+
+    <hr>
+
+    <p>Por último, de los dos, sólo mostraré el tratamiento más complicado en Javascript, el de los múltiples empleados.
+        <br>Lo importante es el uso de <strong>JSON.parse( ...String... )</strong> para convertir una cadena en un objeto Javascript.
+        <br>Por lo demás es una petición AJAX normal y corriente con sus cuatro pasos.
+    </p>
+    <pre><code>
+        // 1 - Crear objeto XMLHttpRequest
+        // 2 - Abrir (¿definir cadena de?) conexión "XMLHttpRequest.open(metodoHttp, url, esAsincrono)"
+        // 3 - Defino la función a ejecutar cuando los datos estén "listos"
+        // 4 - Enviar el request 
+        
+        
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'AJAX02_empleados.json', true); 
+        xhr.onload = function() {
+            if ( this.status === 200 ) {
+                const personas = JSON.parse ( this.responseText );
+                console.log( personas );
+                
+                let htmlTemplate = '';
+                personas.forEach( function( itemPersonas ) {
+                    htmlTemplate += `
+                        &lt;ul&gt;
+                            &lt;li&gt;Nombre: ${itemPersonas.nombre} ${itemPersonas.apellido}&lt;/li&gt;
+                            &lt;li&gt;es ${itemPersonas.puesto} en ${itemPersonas.empresa}&lt;/li&gt;
+                        &lt;/ul&gt;
+                    `;
+                }); 
+    
+                document.getElementById('datosEmpleados').innerHTML = htmlTemplate;
+            }
+        };
+        xhr.send();        
+    </code></pre>
+
+    <footer>
+        <div class="anterior" style="float:left"><a href="AJAX01_intro.html">Anterior: Intro a AJAX</a></div>
+        <div class="siguiente" style="float:right"><a href="AJAX02.html">Siguiente</a></div>
+    </footer>
+    
+    <script src="AJAX02_json.js"></script>
+</body>
+
+</html>

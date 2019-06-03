@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1
+        , "nombre": "Florentino"
+        , "apellido": "Pérez"
+        , "empresa": "Real Madrid"
+        , "puesto": "presidente"
+    }, 
+    {
+        "id": 2
+        , "nombre": "Pep"
+        , "apellido": "Guardiola"
+        , "empresa": "Manchester City"
+        , "puesto": "entrenador"
+    },
+    {
+        "id": 3
+        , "nombre": "Sergio"
+        , "apellido": "Ramos"
+        , "empresa": "Real Madrid"
+        , "puesto": "capitán"
+    },
+    {
+        "id": 4
+        , "nombre": "Leo"
+        , "apellido": "Messi"
+        , "empresa": "FC Barcelona"
+        , "puesto": "jugador franquicia"
+    }
+]
+
+
